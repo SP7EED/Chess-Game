@@ -2,6 +2,9 @@ import java.util.ArrayList;
 
 public class King extends Piece {
 
+    public King() {
+        isWhite = true;
+    }
     public King(boolean isWhite) {
         super(isWhite);
     }
@@ -29,5 +32,10 @@ public class King extends Piece {
             }
         }
 
+    }
+    @Override
+    public King copy() {
+        boolean isWhite = this.isWhite;
+        return new King(!isWhite);
     }
 }

@@ -3,6 +3,9 @@ import java.util.ArrayList;
 public class Knight extends Piece {
     int value = 3;
 
+    public Knight() {
+        isWhite = true;
+    }
     public Knight(boolean isWhite) {
         super(isWhite);
     }
@@ -30,5 +33,11 @@ public class Knight extends Piece {
             }
         }
 
+    }
+
+    @Override
+    public Knight copy() {
+        boolean isWhite = this.isWhite;
+        return new Knight(!isWhite);
     }
 }

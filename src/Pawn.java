@@ -3,6 +3,9 @@ import java.util.ArrayList;
 public class Pawn extends Piece {
     int value = 1;
 
+    public Pawn() {
+        isWhite = true;
+    }
     public Pawn(boolean isWhite) {
         super(isWhite);
     }
@@ -36,5 +39,11 @@ public class Pawn extends Piece {
             }
         }
 
+    }
+
+    @Override
+    public Pawn copy() {
+        boolean isWhite = this.isWhite;
+        return new Pawn(!isWhite);
     }
 }

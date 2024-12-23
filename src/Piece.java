@@ -3,6 +3,9 @@ import java.util.ArrayList;
 public abstract class Piece {
     boolean isWhite;
 
+    public Piece() {
+        isWhite = true;
+    };
     public Piece(boolean isWhite) {
         this.isWhite = isWhite;
     }
@@ -41,5 +44,8 @@ public abstract class Piece {
             ny += dy;
         }
     }
+
+    public abstract Piece copy();
+
 }
 
