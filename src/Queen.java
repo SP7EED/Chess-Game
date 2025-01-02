@@ -20,4 +20,8 @@ public class Queen extends Piece {
         boolean isWhite = this.isWhite;
         return new Queen(!isWhite);
     }
+
+    public String emoji() {
+        return isWhite ? "♛" : "♕";
+    }
 }

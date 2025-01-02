@@ -38,4 +38,8 @@ public class King extends Piece {
         boolean isWhite = this.isWhite;
         return new King(!isWhite);
     }
+
+    public String emoji() {
+        return isWhite ? "♚" : "♔";
+    }
 }

@@ -21,14 +21,15 @@ public class Pawn extends Piece {
     protected void addMove(ArrayList<Move> moves, int x, int y, int dx, int dy, Piece[][] board) {
         int nx = x + dx;
         int ny;
-        ny = isWhite ? y + dy : y - dy;
+        ny = isWhite ? y - dy : y + dy;
 
 
         if (nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {
-           Move move;
             if (nx == x) {
                 if (board[nx][ny] == null) {
-                    if (!(dy == -2 && x != 1 && x != 7)) {
+                    if (dy != -2) {
+                        moves.add(new Move(nx, ny));
+                    } else if ((isWhite && y == 1) || (!isWhite && y == 6)) {
                         moves.add(new Move(nx, ny));
                     }
                 }
@@ -45,5 +46,9 @@ public class Pawn extends Piece {
     public Pawn copy() {
         boolean isWhite = this.isWhite;
         return new Pawn(!isWhite);
+    }
+
+    public String emoji() {
+        return isWhite ? "♟" : "♙";
     }
 }

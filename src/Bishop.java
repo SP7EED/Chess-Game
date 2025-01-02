@@ -21,4 +21,8 @@ public class Bishop extends Piece {
         boolean isWhite = this.isWhite;
         return new Bishop(!isWhite);
     }
+
+    public String emoji() {
+        return isWhite ? "♝" : "♗";
+    }
 }

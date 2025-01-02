@@ -40,4 +40,8 @@ public class Knight extends Piece {
         boolean isWhite = this.isWhite;
         return new Knight(!isWhite);
     }
+
+    public String emoji() {
+        return isWhite ? "♞" : "♘";
+    }
 }

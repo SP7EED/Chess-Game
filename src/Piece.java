@@ -5,7 +5,7 @@ public abstract class Piece {
 
     public Piece() {
         isWhite = true;
-    };
+    }
     public Piece(boolean isWhite) {
         this.isWhite = isWhite;
     }
@@ -19,11 +19,6 @@ public abstract class Piece {
             addMove(moves, x, y, direction[0], direction[1], board);
         }
 
-//        for (Move move : moves) {
-//            move.x += 1;         // szachownica 1-8
-//            move.y += 1;
-//        }
-
         return moves;
     }
 
@@ -32,7 +27,6 @@ public abstract class Piece {
         int ny = y + dy;
 
         while(nx >= 0 && nx < 8 && ny >= 0 && ny < 8) {
-            Move move;
             if (board[nx][ny] != null) {
                 if (board[nx][ny].isWhite != isWhite) {
                     moves.add(new Move(nx, ny));
@@ -47,5 +41,6 @@ public abstract class Piece {
 
     public abstract Piece copy();
 
+    public abstract String emoji();
 }
 

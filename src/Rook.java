@@ -22,4 +22,8 @@ public class Rook extends Piece {
         boolean isWhite = this.isWhite;
         return new Rook(!isWhite);
     }
+
+    public String emoji() {
+        return isWhite ? "♜" : "♖";
+    }
 }
