@@ -3,23 +3,30 @@ import java.util.ArrayList;
 public class ChessBoard {
     Piece[][] board = new Piece[8][8];
 
-    public ArrayList<Move> getLegalMoves(int x, int y) {
-//        if (piece == null) Collections.emptyList();
-        ArrayList<Move> legalMoves = null;
-        Piece piece = board[x][y];
 
-        try {
-            legalMoves = piece.getPotentialMoves(x, y, board);
-        } catch (NullPointerException e) {
-            System.out.println("NullPointerException in ChessBoard.getLegalMoves()");
+    // sets clean, new ChessBoard
+    public ChessBoard() {
+
+        ArrayList<Piece> pieces = new ArrayList<>();
+        pieces.add(new Rook());
+        pieces.add(new Knight());
+        pieces.add(new Bishop());
+        pieces.add(new Queen());
+        pieces.add(new King());
+        pieces.add(new Bishop());
+        pieces.add(new Knight());
+        pieces.add(new Rook());
+
+        for (Piece piece : pieces) {
+            board[pieces.indexOf(piece)][0] = piece;
+            board[pieces.indexOf(piece)][7] = piece.copy();
+
+            board[pieces.indexOf(piece)][1] = new Pawn(true);
+            board[pieces.indexOf(piece)][6] = new Pawn(false);
         }
-
-
-        return legalMoves;
     }
 
     public void printBoard() {
-
         for (int i = 7; i >= 0; i--) {
             for (int j = 0; j < 8; j++) {
                 if (board[j][i] != null) {
@@ -32,8 +39,5 @@ public class ChessBoard {
         }
     }
 
-    public void setPiece(int x, int y, int nx, int ny) {
-        board[nx][ny] = board[x][y];
-        board[x][y] = null;
-    }
+
 }
