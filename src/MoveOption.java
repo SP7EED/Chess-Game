@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 
 public class MoveOption extends Piece {
+    String s_emoji;
 
-
-    public MoveOption() {}
+    public MoveOption(String s_emoji) {
+        this.s_emoji = s_emoji;
+    }
 
     @Override
     public ArrayList<Move> getPotentialMoves(int x, int y, Piece[][] board) {
@@ -17,6 +19,6 @@ public class MoveOption extends Piece {
 
     @Override
     public String emoji() {
-        return "●";
+        return s_emoji;
     }
 }

@@ -88,7 +88,8 @@ public class GameLogic {
     }
 
     private static void visualMoves(int x, int y, ChessBoard chessBoard) {
-        chessBoard.board[x][y] = new MoveOption();
+        if (chessBoard.board[x][y] == null) chessBoard.board[x][y] = new MoveOption("▮");
+        else chessBoard.board[x][y] = new MoveOption("✖");
     }
 
     private static void removeVisualMoves(int x, int y, ChessBoard chessBoard) {

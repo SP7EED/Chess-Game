@@ -28,6 +28,7 @@ public class ChessBoard {
 
     public void printBoard() {
         for (int i = 7; i >= 0; i--) {
+            System.out.print((i+1)+" ");
             for (int j = 0; j < 8; j++) {
                 if (board[j][i] != null) {
                     System.out.print(board[j][i].emoji() + " ");
@@ -37,7 +38,11 @@ public class ChessBoard {
             }
             System.out.println();
         }
+        System.out.print("  \u200A");
+        for (int i=0; i < 8; i++) {
+            System.out.print((new Move().intToChessStringCord(i))+"\u2002"+"\u2002");
+        }
+        System.out.println();
     }
-
 
 }
