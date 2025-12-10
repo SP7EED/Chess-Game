@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Pawn extends Piece {
     int value = 1;
 
+    // CONSTRUCTORS
     public Pawn() {
         isWhite = true;
     }
@@ -10,6 +11,19 @@ public class Pawn extends Piece {
         super(isWhite);
     }
 
+    // TEMPORARY FUNCTIONS FOR GENERATING
+    @Override
+    public Pawn copyPieceWithDifferentColor() {
+        boolean isWhite = this.isWhite;
+        return new Pawn(!isWhite);
+    }
+    public String emoji() {
+        return isWhite ? "♟" : "♙";
+    }
+
+
+
+    // ACTUAL FUNCTIONS
     @Override
     public ArrayList<Move> getPotentialMoves(int x, int y, Piece[][] board) {
         int[][] directions = {{0, -1}, {1, -1}, {-1, -1}, {0, -2}};
@@ -40,15 +54,6 @@ public class Pawn extends Piece {
             }
         }
 
-    }
+    } // more complicated functions to add moves to array
 
-    @Override
-    public Pawn copy() {
-        boolean isWhite = this.isWhite;
-        return new Pawn(!isWhite);
-    }
-
-    public String emoji() {
-        return isWhite ? "♟" : "♙";
-    }
 }

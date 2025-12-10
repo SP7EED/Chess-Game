@@ -6,27 +6,24 @@ public class Move {
     String chessX = intToChessStringCord(x);
     int chessY = y+1;
 
+    // CONSTRUCTORS
     public Move() {}
-
     public Move(int x, int y) {
         this.x = x;
         this.y = y;
     }
-
     public Move(String s) {
         String[] stringsTab = s.replaceAll(" ", "").split("");
         try {
             this.x = stringsTab[0].matches("\\d") ? Integer.parseInt(stringsTab[0]) : chessStringCordToInt(stringsTab[0]);
             this.y = Integer.parseInt(stringsTab[1])-1;
         } catch (NumberFormatException e) {System.out.println("NumberFormatException in Move constructor");}
-    }
+    } // constructor able to decode chess cords into x and y
 
-    @Override
-    public String toString() {
-        return "(" + intToChessStringCord(x) + ", " + (y+1) + ")";
-    }
 
-    @Override
+
+    // TODO - what is that for?
+    @Override // idk for what is this, but sure its important
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -34,11 +31,13 @@ public class Move {
         return x == move.x && y == move.y;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
-    }
 
+
+    // FORMATTING CORDS HASHES, DECODING CORDS
+    @Override
+    public String toString() {
+        return "(" + intToChessStringCord(x) + ", " + (y+1) + ")";
+    } // CORD TO STRING
     public String intToChessStringCord(int a) {
         return switch (a) {
             case 0: yield "\uD835\uDDD4";
@@ -54,7 +53,6 @@ public class Move {
                 throw new IllegalStateException("Unexpected value: " + a);
         };
     }
-
     public int chessStringCordToInt(String a) {
         return switch (a.toUpperCase()) {
             case "A": yield 0;
@@ -71,7 +69,13 @@ public class Move {
         };
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
 
+
+    // GET/SET X and Y
     public int getX() {
         return x;
     }
@@ -84,6 +88,4 @@ public class Move {
     public void setY(int y) {
         this.y = y;
     }
-
-
 }

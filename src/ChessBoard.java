@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class ChessBoard {
     Piece[][] board = new Piece[8][8];
 
-
     // sets clean, new ChessBoard
     public ChessBoard() {
 
@@ -19,13 +18,17 @@ public class ChessBoard {
 
         for (Piece piece : pieces) {
             board[pieces.indexOf(piece)][0] = piece;
-            board[pieces.indexOf(piece)][7] = piece.copy();
+            board[pieces.indexOf(piece)][7] = piece.copyPieceWithDifferentColor();
 
             board[pieces.indexOf(piece)][1] = new Pawn(true);
             board[pieces.indexOf(piece)][6] = new Pawn(false);
         }
     }
 
+
+
+    // TODO - low task priority
+    // board.printBoard(), not sure if properly defined -> better printBoard(Board board);
     public void printBoard() {
         for (int i = 7; i >= 0; i--) {
             System.out.print((i+1)+" ");
@@ -44,5 +47,4 @@ public class ChessBoard {
         }
         System.out.println();
     }
-
 }

@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class King extends Piece {
 
+    // CONSTRUCTORS
     public King() {
         isWhite = true;
     }
@@ -9,6 +10,21 @@ public class King extends Piece {
         super(isWhite);
     }
 
+    // TEMPORARY FUNCTIONS FOR GENERATING
+    @Override
+    public King copyPieceWithDifferentColor() {
+        boolean isWhite = this.isWhite;
+        return new King(!isWhite);
+    }
+    public String emoji() {
+        return isWhite ? "♚" : "♔";
+    }
+
+
+
+
+
+    // ACTUAL FUNCTIONS
     @Override
     public ArrayList<Move> getPotentialMoves(int x, int y, Piece[][] board) {
         int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {-1, 1}, {1, -1}, {-1, -1}};
@@ -33,13 +49,6 @@ public class King extends Piece {
         }
 
     }
-    @Override
-    public King copy() {
-        boolean isWhite = this.isWhite;
-        return new King(!isWhite);
-    }
+    // more complicated move generating for king mechanics
 
-    public String emoji() {
-        return isWhite ? "♚" : "♔";
-    }
 }

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Knight extends Piece {
     int value = 3;
 
+    // CONSTRUCTORS
     public Knight() {
         isWhite = true;
     }
@@ -10,6 +11,18 @@ public class Knight extends Piece {
         super(isWhite);
     }
 
+    // TEMPORARY FUNCTIONS FOR GENERATING
+    @Override
+    public Knight copyPieceWithDifferentColor() {
+        boolean isWhite = this.isWhite;
+        return new Knight(!isWhite);
+    }
+    public String emoji() {
+        return isWhite ? "♞" : "♘";
+    }
+
+
+    // ACTUAL FUNCTIONS
     @Override
     public ArrayList<Move> getPotentialMoves(int x, int y, Piece[][] board) {
         int[][] directions = {{-2, 1}, {2, 1}, {-2, -1}, {2, -1},   {1, 2}, {-1, 2}, {1, -2}, {-1, -2}};
@@ -34,14 +47,5 @@ public class Knight extends Piece {
         }
 
     }
-
-    @Override
-    public Knight copy() {
-        boolean isWhite = this.isWhite;
-        return new Knight(!isWhite);
-    }
-
-    public String emoji() {
-        return isWhite ? "♞" : "♘";
-    }
+    // more complicated move generating for king mechanics
 }

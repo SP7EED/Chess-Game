@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+// TODO - how to remove this unnecessary class
 public class MoveOption extends Piece {
     String s_emoji;
 
@@ -13,7 +14,7 @@ public class MoveOption extends Piece {
     }
 
     @Override
-    public Piece copy() {
+    public Piece copyPieceWithDifferentColor() {
         return null;
     }
 
@@ -21,4 +22,6 @@ public class MoveOption extends Piece {
     public String emoji() {
         return s_emoji;
     }
+
+    // I don't know yet what is this class for but will tag it when I figure out
 }
